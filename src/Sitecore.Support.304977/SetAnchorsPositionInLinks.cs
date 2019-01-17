@@ -69,10 +69,12 @@ namespace Sitecore.Support.Pipelines.RenderField
         return link;
       }
       int num2 = link.IndexOf("?", num + 1);
-      if (num2 < 0)
-      {
-        num2 = link.IndexOf("&", num + 1);
-      }
+      #region Sitecore.Support.304977
+      //if (num2 < 0)
+      //{
+      //  num2 = link.IndexOf("&", num + 1);
+      //}
+      #endregion
       if (num2 < 0)
       {
         return link;
