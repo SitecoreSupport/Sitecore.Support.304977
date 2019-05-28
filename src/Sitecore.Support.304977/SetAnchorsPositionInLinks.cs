@@ -49,7 +49,9 @@ namespace Sitecore.Support.Pipelines.RenderField
         stringBuilder.Append(text.Substring(num, length));
         int length2 = text.IndexOf("\"", num2 + SetAnchorsPositionInLinks.pattern.Length + 1, StringComparison.Ordinal) - num2 - SetAnchorsPositionInLinks.pattern.Length;
         string text2 = text.Substring(num2 + SetAnchorsPositionInLinks.pattern.Length, length2);
-        text2 = this.MoveAnchor(text2);
+        #region Sitecore.Support.304977
+        //text2 = this.MoveAnchor(text2);
+        #endregion
         stringBuilder.Append(text2);
         num = num2 + SetAnchorsPositionInLinks.pattern.Length + text2.Length;
       }
@@ -69,12 +71,12 @@ namespace Sitecore.Support.Pipelines.RenderField
         return link;
       }
       int num2 = link.IndexOf("?", num + 1);
-      #region Sitecore.Support.304977
-      //if (num2 < 0)
-      //{
-      //  num2 = link.IndexOf("&", num + 1);
-      //}
-      #endregion
+
+      if (num2 < 0)
+      {
+        num2 = link.IndexOf("&", num + 1);
+      }
+
       if (num2 < 0)
       {
         return link;
